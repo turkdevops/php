@@ -67,3 +67,8 @@ workflows:
           filters:
             branches:
               only: master
+      - build-images-7:
+          context: org-global
+          filters:
+            branches:
+              only: master
