@@ -1,0 +1,15 @@
+ARG PHP_VERSION=$PHP_VERSION
+FROM islamicnetwork/php:${PHP_VERSION}-apache
+
+### DEV ENVIRONMENT SPECIFIC ###
+################################
+ENV PROVISION_CONTEXT "development"
+RUN pecl install xdebug && docker-php-ext-enable xdebug && touch /var/log/xdebug.log && chmod 777 /var/log/xdebug.log
+
+# Add Development PHP.ini
+COPY etc/php/development.ini /usr/local/etc/php/conf.d/development.ini
+
+# Remove Production PHP.ini
+RUN rm -rf /usr/local/etc/php/conf.d/production.ini
+
+################################
