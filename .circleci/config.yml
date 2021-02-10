@@ -116,6 +116,8 @@ workflows:
               only: master
       - build-images-8-apache-dev:
           context: org-global
+          requires:
+            - build-images-8-apache
           filters:
             branches:
               only: master
@@ -131,6 +133,8 @@ workflows:
               only: master
       - build-images-7-apache-dev:
           context: org-global
+          requires:
+            - build-images-7-apache
           filters:
             branches:
               only: master
