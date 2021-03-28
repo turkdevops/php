@@ -92,4 +92,3 @@ EXPOSE 8080
 ENV PROVISION_CONTEXT "production"
 
 ################################
-CMD ["startup"]
