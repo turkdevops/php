@@ -4,3 +4,4 @@ docker build . -t islamicnetwork/php:8.0-apache --build-arg PHP_VERSION=8.0 -f D
 docker build . -t islamicnetwork/php:8.0-apache-dev --build-arg PHP_VERSION=8.0 -f Dockerfile.apache.dev
 ```
 
+
