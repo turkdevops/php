@@ -39,7 +39,7 @@ RUN apt-get upgrade && apt-get update && ACCEPT_EULA=Y && apt-get install -y \
         pkg-config \ 
         libkrb5-dev \
     && rm -r /var/lib/apt/lists/* \
-    && pecl install redis-5.3.2 \
+    && pecl install redis \
     && pecl install apcu \
     && pecl install memcached \
     && pecl install timezonedb \
