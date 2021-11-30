@@ -17,8 +17,10 @@ These images will work with OpenShift Online, Sloppy.io, any managed Kubernetes 
 ## CLI Images
 CLI Images are available on Docker Hub and Quay.io as:
 
+islamicnetwork/php:8.1-cli
 islamicnetwork/php:8.0-cli
 islamicnetwork/php:7.4-cli
+quay.io/islamic-network/php:8.1-cli
 quay.io/islamic-network/php:8.0-cli
 quay.io/islamic-network/php:7.4-cli
 
@@ -26,8 +28,10 @@ quay.io/islamic-network/php:7.4-cli
 ## Apache Images
 Apache Images are available on Docker Hub and Quay.io as:
 
+islamicnetwork/php:8.1-apache
 islamicnetwork/php:8.0-apache
 islamicnetwork/php:7.4-apache
+quay.io/islamic-network/php:8.1-apache
 quay.io/islamic-network/php:8.0-apache
 quay.io/islamic-network/php:7.4-apache
 
@@ -38,8 +42,10 @@ These images come with opcache enabled and no xdebug, so they cannot be used for
 ## Apache Images for Development Purposes
 Apache Images are available on Docker Hub and Quay.io and come bundled with xdebug. Opcache is disabled in these images.
 
+islamicnetwork/php:8.1-apache-dev
 islamicnetwork/php:8.0-apache-dev
 islamicnetwork/php:7.4-apache-dev
+quay.io/islamic-network/php:8.1-apache-dev
 quay.io/islamic-network/php:8.0-apache-dev
 quay.io/islamic-network/php:7.4-apache-dev
 
