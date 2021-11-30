@@ -4,6 +4,23 @@ executors:
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
+  build-images-81-apache:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: | 
+            cd 8/8.1
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t islamicnetwork/php:8.1-apache --build-arg PHP_VERSION=8.1 -f Dockerfile.apache
+            docker tag islamicnetwork/php:8.1-apache quay.io/islamic-network/php:8.1-apache
+            docker push islamicnetwork/php:8.1-apache 
+            docker push quay.io/islamic-network/php:8.1-apache
   build-images-8-apache:
     executor: docker-publisher
     steps:
@@ -21,6 +38,23 @@ jobs:
             docker tag islamicnetwork/php:8.0-apache quay.io/islamic-network/php:8.0-apache
             docker push islamicnetwork/php:8.0-apache 
             docker push quay.io/islamic-network/php:8.0-apache
+  build-images-81-apache-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: | 
+            cd 8/8.0
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t islamicnetwork/php:8.1-apache-dev --build-arg PHP_VERSION=8.1 -f Dockerfile.apache.dev
+            docker tag islamicnetwork/php:8.1-apache-dev quay.io/islamic-network/php:8.1-apache-dev
+            docker push islamicnetwork/php:8.1-apache-dev
+            docker push quay.io/islamic-network/php:8.1-apache-dev
   build-images-8-apache-dev:
     executor: docker-publisher
     steps:
@@ -38,6 +72,23 @@ jobs:
             docker tag islamicnetwork/php:8.0-apache-dev quay.io/islamic-network/php:8.0-apache-dev
             docker push islamicnetwork/php:8.0-apache-dev
             docker push quay.io/islamic-network/php:8.0-apache-dev
+  build-images-81-cli:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: | 
+            cd 8/8.0
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t islamicnetwork/php:8.1-cli --build-arg PHP_VERSION=8.1 -f Dockerfile.cli
+            docker tag islamicnetwork/php:8.1-cli quay.io/islamic-network/php:8.1-cli
+            docker push islamicnetwork/php:8.1-cli 
+            docker push quay.io/islamic-network/php:8.1-cli
   build-images-8-cli:
     executor: docker-publisher
     steps:
