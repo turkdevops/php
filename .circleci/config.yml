@@ -8,7 +8,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 8.0
@@ -25,7 +25,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 8.0
@@ -42,7 +42,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 8.0
@@ -59,7 +59,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 7.4
@@ -76,7 +76,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 7.4
@@ -93,7 +93,7 @@ jobs:
     executor: docker-publisher
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
           version: 20.10.6
       - run:
           name: Build and publish PHP 7.4
