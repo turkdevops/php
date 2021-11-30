@@ -2,7 +2,7 @@
 [![](https://img.shields.io/github/license/islamic-network/php.svg)](https://github.com/islamic-network/php/blob/master/LICENSE.txt)
 ![Docker Pulls](https://img.shields.io/docker/pulls/islamicnetwork/php)
 
-# PHP 7.4 Docker Image with Apache 
+# PHP Docker Images 
 
 This repository produces PHP Images for the CLI and with Apache, ready for production use.
 
