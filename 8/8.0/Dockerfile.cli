@@ -36,6 +36,7 @@ RUN apt-get upgrade && apt-get update && ACCEPT_EULA=Y && apt-get install -y \
         autoconf \
         libc-dev \
         pkg-config \ 
+        iputils-ping \
     && pecl install redis \
     && pecl install apcu \
     && pecl install memcached \

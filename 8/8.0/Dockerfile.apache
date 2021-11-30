@@ -38,6 +38,7 @@ RUN apt-get upgrade && apt-get update && ACCEPT_EULA=Y && apt-get install -y \
 	libc-client-dev \
         pkg-config \ 
         libkrb5-dev \
+        iputils-ping \
     && rm -r /var/lib/apt/lists/* \
     && pecl install redis \
     && pecl install apcu \
