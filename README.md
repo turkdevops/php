@@ -116,14 +116,16 @@ The following modules / extensions / PECLs are enabled on this container (exclud
 * xml 
 * xmlwriter 
 * zip
+* imap
 
 #### PECLs
 * Redis
-* GeoIP
+* APCu
 * gRPC
 * Memcached
 * TimezoneDB
 * APCu
+* RD Kafka
 
 ## Need something else added?
 
