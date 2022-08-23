@@ -12,7 +12,7 @@ They come pre-bundled with linux packages and PECLs used within the Islamic Netw
 packages on production containers controversial, it just makes resolving production issues easier, especially when you are not a 100 person team.
 *These images are not for you if you only like to deploy 30 MB Alpine images in production.*
 
-These images will work with OpenShift Online, Sloppy.io, any managed Kubernetes service or any other Docker hosts. 
+These images have been tested on tested on AWS EKS, Azure AKS, Google GKE, Digital Ocean DOKS, Linode LKE, OpenShift, Apache Mesos and Sloppy.io.
 
 ## CLI Images
 CLI Images are available on Docker Hub and Quay.io as:
@@ -116,14 +116,16 @@ The following modules / extensions / PECLs are enabled on this container (exclud
 * xml 
 * xmlwriter 
 * zip
+* imap
 
 #### PECLs
 * Redis
-* GeoIP
+* APCu
 * gRPC
 * Memcached
 * TimezoneDB
 * APCu
+* RD Kafka
 
 ## Need something else added?
 
