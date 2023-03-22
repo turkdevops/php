@@ -4,6 +4,8 @@
  
 # PHP Docker Images 
 
+*NOTE:* In light of the changes at Docker Hub for free organisation accounts, all Islamic Network images are moving to the GitHub Container Registry.
+
 This repository produces PHP Images for the CLI and with Apache, ready for production use.
 
 These are based on the official PHP Docker Images and run Debian.
@@ -17,9 +19,9 @@ These images have been tested on tested on AWS EKS, Azure AKS, Google GKE, Digit
 ## CLI Images
 CLI Images are available on Docker Hub and Quay.io as:
 
-* islamicnetwork/php:8.1-cli
-* islamicnetwork/php:8.0-cli
-* islamicnetwork/php:7.4-cli
+* ghcr.io/islamic-network/php:8.1-cli
+* ghcr.io/islamic-network/php:8.0-cli
+* ghcr.io/islamic-network/php:7.4-cli
 * quay.io/islamic-network/php:8.1-cli
 * quay.io/islamic-network/php:8.0-cli
 * quay.io/islamic-network/php:7.4-cli
@@ -28,9 +30,9 @@ CLI Images are available on Docker Hub and Quay.io as:
 ## Apache Images
 Apache Images are available on Docker Hub and Quay.io as:
 
-* islamicnetwork/php:8.1-apache
-* islamicnetwork/php:8.0-apache
-* islamicnetwork/php:7.4-apache
+* ghcr.io/islamic-network/php:8.1-apache
+* ghcr.io/islamic-network/php:8.0-apache
+* ghcr.io/islamic-network/php:7.4-apache
 * quay.io/islamic-network/php:8.1-apache
 * quay.io/islamic-network/php:8.0-apache
 * quay.io/islamic-network/php:7.4-apache
@@ -42,9 +44,9 @@ These images come with opcache enabled and no xdebug, so they cannot be used for
 ## Apache Images for Development Purposes
 Apache Images are available on Docker Hub and Quay.io and come bundled with xdebug. Opcache is disabled in these images.
 
-* islamicnetwork/php:8.1-apache-dev
-* islamicnetwork/php:8.0-apache-dev
-* islamicnetwork/php:7.4-apache-dev
+* ghcr.io/islamic-network/php:8.1-apache-dev
+* ghcr.io/islamic-network/php:8.0-apache-dev
+* ghcr.io/islamic-network/php:7.4-apache-dev
 * quay.io/islamic-network/php:8.1-apache-dev
 * quay.io/islamic-network/php:8.0-apache-dev
 * quay.io/islamic-network/php:7.4-apache-dev
