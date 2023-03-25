@@ -195,6 +195,11 @@ workflows:
   version: 2
   build-and-publish:
     jobs:
+      - build-images-81-unit:
+          context: org-global
+          filters:
+            branches:
+              only: master
       - build-images-82-apache:
           context: org-global
           filters:
@@ -229,6 +234,13 @@ workflows:
           context: org-global
           requires:
             - build-images-82-apache
+          filters:
+            branches:
+              only: master
+      - build-images-81-unit-dev:
+          context: org-global
+          requires:
+            - build-images-81-unit
           filters:
             branches:
               only: master
