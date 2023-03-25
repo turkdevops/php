@@ -38,6 +38,23 @@ jobs:
             docker tag ghcr.io/islamic-network/php:8.1-apache quay.io/islamic-network/php:8.1-apache
             docker push ghcr.io/islamic-network/php:8.1-apache 
             docker push quay.io/islamic-network/php:8.1-apache
+  build-images-81-unit:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: |
+            cd 8/8.1
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+
+            docker build . -t ghcr.io/islamic-network/php:8.1-unit -f Dockerfile.nunit
+            docker tag ghcr.io/islamic-network/php:8.1-unit quay.io/islamic-network/php:8.1-unit
+            docker push ghcr.io/islamic-network/php:8.1-unit 
+            docker push quay.io/islamic-network/php:8.1-unit
   build-images-8-apache:
     executor: docker-publisher
     steps:
@@ -89,6 +106,23 @@ jobs:
             docker tag ghcr.io/islamic-network/php:8.1-apache-dev quay.io/islamic-network/php:8.1-apache-dev
             docker push ghcr.io/islamic-network/php:8.1-apache-dev
             docker push quay.io/islamic-network/php:8.1-apache-dev
+  build-images-81-unit-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: |
+            cd 8/8.0
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+
+            docker build . -t ghcr.io/islamic-network/php:8.1-unit-dev -f Dockerfile.nunit.dev
+            docker tag ghcr.io/islamic-network/php:8.1-unit-dev quay.io/islamic-network/php:8.1-unit-dev
+            docker push ghcr.io/islamic-network/php:8.1-unit-dev
+            docker push quay.io/islamic-network/php:8.1-unit-dev
   build-images-8-apache-dev:
     executor: docker-publisher
     steps:

@@ -37,6 +37,10 @@ Apache Images are available on Docker Hub and Quay.io as:
 * quay.io/islamic-network/php:8.0-apache
 * quay.io/islamic-network/php:7.4-apache
 
+### NGINX Unit Images
+* ghcr.io/islamic-network/php:8.1-unit
+* quay.io/islamic-network/php:8.1-unit
+
 The Apache document root in the container is /var/www/html and Apache is exposed on port 8080.
 
 These images come with opcache enabled and no xdebug, so they cannot be used for development purposes.
@@ -50,6 +54,10 @@ Apache Images are available on Docker Hub and Quay.io and come bundled with xdeb
 * quay.io/islamic-network/php:8.1-apache-dev
 * quay.io/islamic-network/php:8.0-apache-dev
 * quay.io/islamic-network/php:7.4-apache-dev
+
+### NGINX Unit Images for Development Purposes
+* ghcr.io/islamic-network/php:8.1-unit-dev
+* quay.io/islamic-network/php:8.1-unit-dev
 
 The Apache document root in the container is /var/www/html and Apache is exposed on port 8080.
 
