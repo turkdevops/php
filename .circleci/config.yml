@@ -115,7 +115,7 @@ jobs:
       - run:
           name: Build and publish PHP 8.1
           command: |
-            cd 8/8.0
+            cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
