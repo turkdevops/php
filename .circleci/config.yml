@@ -79,8 +79,8 @@ jobs:
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.2-unit -f Dockerfile.nunit
-            docker tag ghcr.io/islamic-network/php:8.2-unit quay.io/islamic-network/php:8.1-unit
-            docker tag ghcr.io/islamic-network/php:8.2-unit islamicnetwork/php:8.1-unit
+            docker tag ghcr.io/islamic-network/php:8.2-unit quay.io/islamic-network/php:8.2-unit
+            docker tag ghcr.io/islamic-network/php:8.2-unit islamicnetwork/php:8.2-unit
             docker push ghcr.io/islamic-network/php:8.2-unit 
             docker push quay.io/islamic-network/php:8.2-unit
             docker push islamicnetwork/php:8.2-unit
