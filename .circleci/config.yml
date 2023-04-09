@@ -15,12 +15,15 @@ jobs:
           command: | 
             cd 8/8.2
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.2-apache --build-arg PHP_VERSION=8.2 -f Dockerfile.apache
             docker tag ghcr.io/islamic-network/php:8.2-apache quay.io/islamic-network/php:8.2-apache
+            docker tag ghcr.io/islamic-network/php:8.2-apache islamicnetwork/php:8.2-apache
             docker push ghcr.io/islamic-network/php:8.2-apache 
             docker push quay.io/islamic-network/php:8.2-apache
+            docker push islamicnetwork/php:8.2-apache
   build-images-81-apache:
     executor: docker-publisher
     steps:
@@ -32,12 +35,15 @@ jobs:
           command: | 
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.1-apache --build-arg PHP_VERSION=8.1 -f Dockerfile.apache
             docker tag ghcr.io/islamic-network/php:8.1-apache quay.io/islamic-network/php:8.1-apache
+            docker tag ghcr.io/islamic-network/php:8.1-apache islamicnetwork/php:8.1-apache
             docker push ghcr.io/islamic-network/php:8.1-apache 
             docker push quay.io/islamic-network/php:8.1-apache
+            docker push islamicnetwork/php:8.1-apache
   build-images-81-unit:
     executor: docker-publisher
     steps:
@@ -49,64 +55,16 @@ jobs:
           command: |
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.1-unit -f Dockerfile.nunit
             docker tag ghcr.io/islamic-network/php:8.1-unit quay.io/islamic-network/php:8.1-unit
+            docker tag ghcr.io/islamic-network/php:8.1-unit islamicnetwork/php:8.1-unit
             docker push ghcr.io/islamic-network/php:8.1-unit 
             docker push quay.io/islamic-network/php:8.1-unit
-  build-images-8-apache:
-    executor: docker-publisher
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.6
-      - run:
-          name: Build and publish PHP 8.0
-          command: | 
-            cd 8/8.0
-            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
-            
-            docker build . -t ghcr.io/islamic-network/php:8.0-apache --build-arg PHP_VERSION=8.0 -f Dockerfile.apache
-            docker tag ghcr.io/islamic-network/php:8.0-apache quay.io/islamic-network/php:8.0-apache
-            docker push ghcr.io/islamic-network/php:8.0-apache 
-            docker push quay.io/islamic-network/php:8.0-apache
-  build-images-82-apache-dev:
-    executor: docker-publisher
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.6
-      - run:
-          name: Build and publish PHP 8.2
-          command: | 
-            cd 8/8.0
-            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
-            
-            docker build . -t ghcr.io/islamic-network/php:8.2-apache-dev --build-arg PHP_VERSION=8.2 -f Dockerfile.apache.dev
-            docker tag ghcr.io/islamic-network/php:8.2-apache-dev quay.io/islamic-network/php:8.2-apache-dev
-            docker push ghcr.io/islamic-network/php:8.2-apache-dev
-            docker push quay.io/islamic-network/php:8.2-apache-dev
-  build-images-81-apache-dev:
-    executor: docker-publisher
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.6
-      - run:
-          name: Build and publish PHP 8.1
-          command: | 
-            cd 8/8.0
-            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
-            
-            docker build . -t ghcr.io/islamic-network/php:8.1-apache-dev --build-arg PHP_VERSION=8.1 -f Dockerfile.apache.dev
-            docker tag ghcr.io/islamic-network/php:8.1-apache-dev quay.io/islamic-network/php:8.1-apache-dev
-            docker push ghcr.io/islamic-network/php:8.1-apache-dev
-            docker push quay.io/islamic-network/php:8.1-apache-dev
-  build-images-81-unit-dev:
+            docker push islamicnetwork/php:8.1-unit
+  build-images-82-unit:
     executor: docker-publisher
     steps:
       - checkout
@@ -118,11 +76,114 @@ jobs:
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login quay.io -u "$DOCKERHUB_USERNAME" --password-stdin
+
+            docker build . -t ghcr.io/islamic-network/php:8.2-unit -f Dockerfile.nunit
+            docker tag ghcr.io/islamic-network/php:8.1-unit quay.io/islamic-network/php:8.1-unit
+            docker tag ghcr.io/islamic-network/php:8.1-unit islamicnetwork/php:8.1-unit
+            docker push ghcr.io/islamic-network/php:8.1-unit 
+            docker push quay.io/islamic-network/php:8.1-unit
+            docker push islamicnetwork/php:8.1-unit
+  build-images-8-apache:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.0
+          command: | 
+            cd 8/8.0
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t ghcr.io/islamic-network/php:8.0-apache --build-arg PHP_VERSION=8.0 -f Dockerfile.apache
+            docker tag ghcr.io/islamic-network/php:8.0-apache quay.io/islamic-network/php:8.0-apache
+            docker tag ghcr.io/islamic-network/php:8.0-apache islamicnetwork/php:8.0-apache
+            docker push ghcr.io/islamic-network/php:8.0-apache 
+            docker push quay.io/islamic-network/php:8.0-apache
+            docker push islamicnetwork/php:8.0-apache
+  build-images-82-apache-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.2
+          command: | 
+            cd 8/8.0
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t ghcr.io/islamic-network/php:8.2-apache-dev --build-arg PHP_VERSION=8.2 -f Dockerfile.apache.dev
+            docker tag ghcr.io/islamic-network/php:8.2-apache-dev quay.io/islamic-network/php:8.2-apache-dev
+            docker tag ghcr.io/islamic-network/php:8.2-apache-dev islamicnetwork/php:8.2-apache-dev
+            docker push ghcr.io/islamic-network/php:8.2-apache-dev
+            docker push quay.io/islamic-network/php:8.2-apache-dev
+            docker push islamicnetwork/php:8.2-apache-dev
+  build-images-81-apache-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: | 
+            cd 8/8.0
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+            
+            docker build . -t ghcr.io/islamic-network/php:8.1-apache-dev --build-arg PHP_VERSION=8.1 -f Dockerfile.apache.dev
+            docker tag ghcr.io/islamic-network/php:8.1-apache-dev quay.io/islamic-network/php:8.1-apache-dev
+            docker tag ghcr.io/islamic-network/php:8.1-apache-dev islamicnetwork/php:8.1-apache-dev
+            docker push ghcr.io/islamic-network/php:8.1-apache-dev
+            docker push quay.io/islamic-network/php:8.1-apache-dev
+            docker push islamicnetwork/php:8.1-apache-dev
+  build-images-81-unit-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: |
+            cd 8/8.1
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.1-unit-dev -f Dockerfile.nunit.dev
             docker tag ghcr.io/islamic-network/php:8.1-unit-dev quay.io/islamic-network/php:8.1-unit-dev
+            docker tag ghcr.io/islamic-network/php:8.1-unit-dev islamicnetwork/php:8.1-unit-dev
             docker push ghcr.io/islamic-network/php:8.1-unit-dev
             docker push quay.io/islamic-network/php:8.1-unit-dev
+            docker push islamicnetwork/php:8.1-unit-dev
+  build-images-82-unit-dev:
+    executor: docker-publisher
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: Build and publish PHP 8.1
+          command: |
+            cd 8/8.1
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
+
+            docker build . -t ghcr.io/islamic-network/php:8.2-unit-dev -f Dockerfile.nunit.dev
+            docker tag ghcr.io/islamic-network/php:8.1-unit-dev quay.io/islamic-network/php:8.1-unit-dev
+            docker tag ghcr.io/islamic-network/php:8.1-unit-dev islamicnetwork/php:8.1-unit-dev
+            docker push ghcr.io/islamic-network/php:8.1-unit-dev
+            docker push quay.io/islamic-network/php:8.1-unit-dev
+            docker push islamicnetwork/php:8.1-unit-dev
   build-images-8-apache-dev:
     executor: docker-publisher
     steps:
@@ -134,12 +195,15 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.0-apache-dev --build-arg PHP_VERSION=8.0 -f Dockerfile.apache.dev
             docker tag ghcr.io/islamic-network/php:8.0-apache-dev quay.io/islamic-network/php:8.0-apache-dev
+            docker tag ghcr.io/islamic-network/php:8.0-apache-dev islamicnetwork/php:8.0-apache-dev
             docker push ghcr.io/islamic-network/php:8.0-apache-dev
             docker push quay.io/islamic-network/php:8.0-apache-dev
+            docker push islamicnetwork/php:8.0-apache-dev
   build-images-82-cli:
     executor: docker-publisher
     steps:
@@ -151,12 +215,15 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.2-cli --build-arg PHP_VERSION=8.2 -f Dockerfile.cli
             docker tag ghcr.io/islamic-network/php:8.2-cli quay.io/islamic-network/php:8.2-cli
+            docker tag ghcr.io/islamic-network/php:8.2-cli islamicnetwork/php:8.2-cli
             docker push ghcr.io/islamic-network/php:8.2-cli 
             docker push quay.io/islamic-network/php:8.2-cli
+            docker push islamicnetwork/php:8.2-cli
   build-images-81-cli:
     executor: docker-publisher
     steps:
@@ -168,12 +235,15 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.1-cli --build-arg PHP_VERSION=8.1 -f Dockerfile.cli
             docker tag ghcr.io/islamic-network/php:8.1-cli quay.io/islamic-network/php:8.1-cli
+            docker tag ghcr.io/islamic-network/php:8.1-cli islamicnetwork/php:8.1-cli
             docker push ghcr.io/islamic-network/php:8.1-cli 
             docker push quay.io/islamic-network/php:8.1-cli
+            docker push islamicnetwork/php:8.1-cli
   build-images-8-cli:
     executor: docker-publisher
     steps:
@@ -185,16 +255,24 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.0-cli --build-arg PHP_VERSION=8.0 -f Dockerfile.cli
             docker tag ghcr.io/islamic-network/php:8.0-cli quay.io/islamic-network/php:8.0-cli
+            docker tag ghcr.io/islamic-network/php:8.0-cli islamicnetwork/php:8.0-cli
             docker push ghcr.io/islamic-network/php:8.0-cli 
             docker push quay.io/islamic-network/php:8.0-cli
+            docker push islamicnetwork/php:8.0-cli
 workflows:
   version: 2
   build-and-publish:
     jobs:
+      - build-images-82-unit:
+          context: org-global
+          filters:
+            branches:
+              only: master
       - build-images-81-unit:
           context: org-global
           filters:
@@ -234,6 +312,13 @@ workflows:
           context: org-global
           requires:
             - build-images-82-apache
+          filters:
+            branches:
+              only: master
+      - build-images-82-unit-dev:
+          context: org-global
+          requires:
+            - build-images-82-unit
           filters:
             branches:
               only: master
