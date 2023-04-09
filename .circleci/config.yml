@@ -79,11 +79,11 @@ jobs:
             echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.2-unit -f Dockerfile.nunit
-            docker tag ghcr.io/islamic-network/php:8.1-unit quay.io/islamic-network/php:8.1-unit
-            docker tag ghcr.io/islamic-network/php:8.1-unit islamicnetwork/php:8.1-unit
-            docker push ghcr.io/islamic-network/php:8.1-unit 
-            docker push quay.io/islamic-network/php:8.1-unit
-            docker push islamicnetwork/php:8.1-unit
+            docker tag ghcr.io/islamic-network/php:8.2-unit quay.io/islamic-network/php:8.1-unit
+            docker tag ghcr.io/islamic-network/php:8.2-unit islamicnetwork/php:8.1-unit
+            docker push ghcr.io/islamic-network/php:8.2-unit 
+            docker push quay.io/islamic-network/php:8.2-unit
+            docker push islamicnetwork/php:8.2-unit
   build-images-8-apache:
     executor: docker-publisher
     steps:
@@ -179,11 +179,11 @@ jobs:
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.2-unit-dev -f Dockerfile.nunit.dev
-            docker tag ghcr.io/islamic-network/php:8.1-unit-dev quay.io/islamic-network/php:8.1-unit-dev
-            docker tag ghcr.io/islamic-network/php:8.1-unit-dev islamicnetwork/php:8.1-unit-dev
-            docker push ghcr.io/islamic-network/php:8.1-unit-dev
-            docker push quay.io/islamic-network/php:8.1-unit-dev
-            docker push islamicnetwork/php:8.1-unit-dev
+            docker tag ghcr.io/islamic-network/php:8.2-unit-dev quay.io/islamic-network/php:8.2-unit-dev
+            docker tag ghcr.io/islamic-network/php:8.2-unit-dev islamicnetwork/php:8.2-unit-dev
+            docker push ghcr.io/islamic-network/php:8.2-unit-dev
+            docker push quay.io/islamic-network/php:8.2-unit-dev
+            docker push islamicnetwork/php:8.2-unit-dev
   build-images-8-apache-dev:
     executor: docker-publisher
     steps:
