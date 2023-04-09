@@ -15,7 +15,7 @@ jobs:
           command: | 
             cd 8/8.2
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.2-apache --build-arg PHP_VERSION=8.2 -f Dockerfile.apache
@@ -35,7 +35,7 @@ jobs:
           command: | 
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.1-apache --build-arg PHP_VERSION=8.1 -f Dockerfile.apache
@@ -55,7 +55,7 @@ jobs:
           command: |
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.1-unit -f Dockerfile.nunit
@@ -95,7 +95,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.0-apache --build-arg PHP_VERSION=8.0 -f Dockerfile.apache
@@ -115,7 +115,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.2-apache-dev --build-arg PHP_VERSION=8.2 -f Dockerfile.apache.dev
@@ -135,7 +135,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.1-apache-dev --build-arg PHP_VERSION=8.1 -f Dockerfile.apache.dev
@@ -155,7 +155,7 @@ jobs:
           command: |
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.1-unit-dev -f Dockerfile.nunit.dev
@@ -175,7 +175,7 @@ jobs:
           command: |
             cd 8/8.1
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
 
             docker build . -t ghcr.io/islamic-network/php:8.2-unit-dev -f Dockerfile.nunit.dev
@@ -195,7 +195,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.0-apache-dev --build-arg PHP_VERSION=8.0 -f Dockerfile.apache.dev
@@ -215,7 +215,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.2-cli --build-arg PHP_VERSION=8.2 -f Dockerfile.cli
@@ -235,7 +235,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.1-cli --build-arg PHP_VERSION=8.1 -f Dockerfile.cli
@@ -255,7 +255,7 @@ jobs:
           command: | 
             cd 8/8.0
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
-            echo "$DOCKERHUB_PASSWORD" | docker login ghcr.io -u "$DOCKERHUB_USERNAME" --password-stdin
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             echo "$QUAYIO_PASSWORD" | docker login quay.io -u "$QUAYIO_USERNAME" --password-stdin
             
             docker build . -t ghcr.io/islamic-network/php:8.0-cli --build-arg PHP_VERSION=8.0 -f Dockerfile.cli
