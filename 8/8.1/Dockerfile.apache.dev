@@ -1,5 +1,5 @@
 ARG PHP_VERSION=$PHP_VERSION
-FROM islamicnetwork/php:${PHP_VERSION}-apache
+FROM ghcr.io/islamic-network/php:${PHP_VERSION}-apache
 
 ### DEV ENVIRONMENT SPECIFIC ###
 ################################
