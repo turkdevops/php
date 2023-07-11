@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.6
+          version: 20.10.24
       - run:
           name: Build and publish PHP 8.2
           command: | 
