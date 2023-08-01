@@ -17,6 +17,7 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         libpng-dev \
         libwebp-dev \
         libgmp-dev \
+        libyaml-dev \
         libjpeg-dev \
         libfreetype6-dev \
         libaio1 \
@@ -42,6 +43,7 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
     && rm -r /var/lib/apt/lists/* \
     && pecl install redis \
     && pecl install apcu \
+    && pecl install yaml \
     && pecl install memcached \
     && pecl install timezonedb \
 #    && pecl install grpc \ Skip grpc as it takes over 20 mins to install.
@@ -51,7 +53,7 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
     && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
     && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl bcmath tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets imap \
     #&& docker-php-ext-enable redis apcu memcached timezonedb grpc rdkafka apfd
-    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka apfd
+    && docker-php-ext-enable redis apcu yaml memcached timezonedb rdkafka apfd
 
 # Composer
 RUN mkdir -p /usr/local/ssh
