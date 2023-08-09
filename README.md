@@ -17,28 +17,39 @@ packages on production containers controversial, it just makes resolving product
 These images have been tested on tested on AWS EKS, Azure AKS, Google GKE, Digital Ocean DOKS, Linode LKE, OpenShift, Apache Mesos and Sloppy.io.
 
 ## CLI Images
-CLI Images are available on Docker Hub and Quay.io as:
+CLI Images are available on the GitHub Container Registry, Docker Hub and Quay.io as:
 
+* islamicnetwork/php:8.2-cli
+* islamicnetwork/php:8.1-cli
+* islamicnetwork/php:8.0-cli
+* ghcr.io/islamic-network/php:8.2-cli
 * ghcr.io/islamic-network/php:8.1-cli
 * ghcr.io/islamic-network/php:8.0-cli
-* ghcr.io/islamic-network/php:7.4-cli
+* quay.io/islamic-network/php:8.2-cli
 * quay.io/islamic-network/php:8.1-cli
 * quay.io/islamic-network/php:8.0-cli
-* quay.io/islamic-network/php:7.4-cli
 
 
 ## Apache Images
-Apache Images are available on Docker Hub and Quay.io as:
+Apache Images are available on GitHub Container Registry, Docker Hub and Quay.io as:
 
+* islamicnetwork/php:8.2-apache
+* islamicnetwork/php:8.1-apache
+* islamicnetwork/php:8.0-apache
+* ghcr.io/islamic-network/php:8.2-apache
 * ghcr.io/islamic-network/php:8.1-apache
 * ghcr.io/islamic-network/php:8.0-apache
-* ghcr.io/islamic-network/php:7.4-apache
+* quay.io/islamic-network/php:8.2-apache
 * quay.io/islamic-network/php:8.1-apache
 * quay.io/islamic-network/php:8.0-apache
-* quay.io/islamic-network/php:7.4-apache
 
 ### NGINX Unit Images
+Unit Images are available on GitHub Container Registry, Docker Hub and Quay.io as:
+* islamicnetwork/php:8.2-unit
+* islamicnetwork/php:8.1-unit
+* ghcr.io/islamic-network/php:8.2-unit
 * ghcr.io/islamic-network/php:8.1-unit
+* quay.io/islamic-network/php:8.2-unit
 * quay.io/islamic-network/php:8.1-unit
 
 The Apache document root in the container is /var/www/html and Apache is exposed on port 8080.
@@ -135,7 +146,7 @@ The following modules / extensions / PECLs are enabled on this container (exclud
 * Memcached
 * TimezoneDB
 * APCu
-* RD Kafka
+* RD Kafka 
 
 ## Need something else added?
 
