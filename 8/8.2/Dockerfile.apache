@@ -92,6 +92,6 @@ EXPOSE 8080
 ### PROD ENVIRONMENT SPECIFIC ###
 ################################
 
-ENV PROVISION_CONTEXT "production"
+ENV PROVISION_CONTEXT "production" 
 
 ################################
