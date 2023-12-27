@@ -39,6 +39,10 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
       ## Build and push the Docker image ##
+      - name: Where am I?
+        run: pwd
+      - name: What is here?
+        run: ls -la
       - name: Build and push the Apache Production Image
         uses: docker/build-push-action@v5
         with:
