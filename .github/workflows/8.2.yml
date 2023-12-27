@@ -1,4 +1,4 @@
-name: Build Dcoker Images for PHP 8.2 with Apache
+name: Build Docker Images for PHP 8.2 with Apache
 on:
   workflow_dispatch:
     branches:
