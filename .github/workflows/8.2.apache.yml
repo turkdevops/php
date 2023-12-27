@@ -48,7 +48,7 @@ jobs:
       - name: Build and push the Apache Production Image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: 8/8.2
           file: Dockerfile.apache
           build-args: |
             PHP_VERSION=8.2
@@ -60,7 +60,7 @@ jobs:
       - name: Build and push the Apache Development Image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: 8/8.2
           file: Dockerfile.apache.dev
           build-args: |
             PHP_VERSION=8.2
