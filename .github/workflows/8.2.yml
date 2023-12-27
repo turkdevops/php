@@ -4,12 +4,14 @@ on:
     branches:
       - master
     paths:
-      - "8/8.2/*"
+      - "8/8.2/Dockerfile.apache"
+      - "8/8.2/Dockerfile.apache.dev"
   push:
     branches:
       - "master"
     paths:
-      - "8/8.2/*"
+      - "8/8.2/Dockerfile.apache"
+      - "8/8.2/Dockerfile.apache.dev"
 jobs:
   docker-build-and-push:
     runs-on: ubuntu-latest
