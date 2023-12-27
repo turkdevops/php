@@ -1,0 +1,69 @@
+FROM unit:php8.2
+
+# Setup Debian
+RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install -y \
+        unzip \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libmemcached-dev \
+        libzip-dev \
+        libgeoip-dev \
+        libxml2-dev \
+        libxslt-dev \
+        libtidy-dev \
+        libssl-dev \
+        zlib1g-dev \
+        libpng-dev \
+        libwebp-dev \
+        libgmp-dev \
+        libyaml-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
+        libaio1 \
+        libldap2-dev \
+        libonig-dev \
+        apt-file \
+        wget \
+        vim \
+        gnupg \
+        gnupg2 \
+        zip \
+        git \
+        gcc \
+        g++ \
+        librdkafka-dev \
+        autoconf \
+        libc-dev \
+	libc-client-dev \
+        pkg-config \ 
+        libkrb5-dev \
+        iputils-ping \
+	procps \
+    && rm -r /var/lib/apt/lists/* \
+    && pecl install redis \
+    && pecl install apcu \
+    && pecl install memcached \
+    && pecl install timezonedb \
+    && pecl install yaml \ 
+    && pecl install rdkafka \
+    && pecl install apfd \
+    && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
+    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+    && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl bcmath tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets imap \
+    #&& docker-php-ext-enable redis yaml apcu memcached timezonedb grpc rdkafka apfd
+    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka apfd
+
+# Composer
+RUN mkdir -p /usr/local/ssh
+COPY etc/ssh/* /usr/local/ssh/
+RUN sh /usr/local/ssh/install-composer.sh && mv composer.phar /usr/local/bin/composer
+
+# forward log to docker log collector
+RUN ln -sf /dev/stdout /var/log/unit.log
+
+ENV PROVISION_CONTEXT "nunit_production"
+RUN echo "<?php echo phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+# Add Development PHP.ini
+COPY etc/php/production.ini /usr/local/etc/php/conf.d/production.ini
