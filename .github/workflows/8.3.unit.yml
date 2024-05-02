@@ -45,6 +45,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: 8/8.3
+          platforms: linux/amd64,linux/arm64
           file: 8/8.3/Dockerfile.nunit
           build-args: |
             PHP_VERSION=8.3
@@ -57,6 +58,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: 8/8.3
+          platforms: linux/amd64,linux/arm64
           file: 8/8.3/Dockerfile.nunit.dev
           build-args: |
             PHP_VERSION=8.3
