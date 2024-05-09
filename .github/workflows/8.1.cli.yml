@@ -43,6 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: 8/8.1
+          platforms: linux/amd64,linux/arm64
           file: 8/8.1/Dockerfile.cli
           build-args: |
             PHP_VERSION=8.1
