@@ -46,6 +46,7 @@ jobs:
         with:
           context: 8/8.1
           file: 8/8.1/Dockerfile.nunit
+          platforms: linux/amd64,linux/arm64
           build-args: |
             PHP_VERSION=8.1
           push: true
@@ -58,6 +59,7 @@ jobs:
         with:
           context: 8/8.1
           file: 8/8.1/Dockerfile.nunit.dev
+          platforms: linux/amd64,linux/arm64
           build-args: |
             PHP_VERSION=8.1
           push: true
