@@ -3,8 +3,6 @@
   
 # PHP Docker Images 
 
-*NOTE:* In light of the changes at Docker Hub for free organisation accounts, all Islamic Network images are moving to the GitHub Container Registry.
-
 This repository produces PHP Images for the CLI and with Apache, ready for production use.
 
 These are based on the official PHP Docker Images and run Debian.
