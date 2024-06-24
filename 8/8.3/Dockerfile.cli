@@ -30,7 +30,10 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         gnupg \
         gnupg2 \
         zip \
-        git curl gittext-base jq \
+        git \
+        curl \
+        gittext-base \
+        jq \
         gcc \
         g++ \
         librdkafka-dev \
