@@ -39,7 +39,7 @@ jobs:
       - name: Login to the Bahriya Container Registry
         uses: docker/login-action@v3
         with:
-          registry: quay.io
+          registry: bcr.ax
           username: ${{ secrets.BCR_USERNAME }}
           password: ${{ secrets.BCR_PASSWORD }}
       - name: Checkout code
