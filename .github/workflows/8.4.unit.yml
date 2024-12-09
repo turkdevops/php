@@ -10,7 +10,7 @@ on:
     branches:
       - "master"
     paths:
-      - "8/8.4/Dockerfile.nunit"‰
+      - "8/8.4/Dockerfile.nunit"
       - "8/8.4/Dockerfile.nunit.dev"
 jobs:
   docker-build-and-push:
