@@ -36,6 +36,12 @@ jobs:
           registry: quay.io
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
+      - name: Login to the Bahriya Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ secrets.BCR_USERNAME }}
+          password: ${{ secrets.BCR_PASSWORD }}
       - name: Checkout code
         uses: actions/checkout@v2
       ## Build and push the Docker image ##
@@ -49,6 +55,7 @@ jobs:
             PHP_VERSION=8.2
           push: true
           tags: |
+            bcr.ax/library/php:8.2-cli
             islamicnetwork/php:8.2-cli
             ghcr.io/islamic-network/php:8.2-cli
             quay.io/islamic-network/php:8.2-cli
