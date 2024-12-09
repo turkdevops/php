@@ -1,4 +1,4 @@
-name: Build Docker Images for PHP 8.3 (CLI)
+name: Build Docker Images for PHP 8.4 (CLI)
 on:
   workflow_dispatch:
     branches:
