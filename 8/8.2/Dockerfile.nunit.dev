@@ -1,4 +1,4 @@
-FROM ghcr.io/islamic-network/php:8.3-unit
+FROM ghcr.io/islamic-network/php:8.2-unit
 
 ENV PROVISION_CONTEXT "nunit_development"
 
