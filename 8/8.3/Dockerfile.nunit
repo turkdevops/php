@@ -43,7 +43,7 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
     && rm -r /var/lib/apt/lists/* \
     && pecl install redis \
     && pecl install apcu \
-    && pecl install memcached \
+    && pecl install memcached-3.2.0 \
     && pecl install timezonedb \
     && pecl install yaml \ 
     && pecl install rdkafka \
