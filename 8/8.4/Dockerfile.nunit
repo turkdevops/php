@@ -17,8 +17,8 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         libpng-dev \
         libwebp-dev \
         libgmp-dev \
-        libyaml-dev \
         libjpeg-dev \
+        libyaml-dev \
         libfreetype6-dev \
         libaio1 \
         libldap2-dev \
@@ -30,29 +30,25 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         gnupg2 \
         zip \
         git \
+        curl \
+        jq \
         gcc \
         g++ \
         librdkafka-dev \
         autoconf \
         libc-dev \
-	libc-client-dev \
-        pkg-config \ 
-        libkrb5-dev \
+        pkg-config \
         iputils-ping \
-	procps \
-    && rm -r /var/lib/apt/lists/* \
     && pecl install redis \
     && pecl install apcu \
     && pecl install memcached \
     && pecl install timezonedb \
-    && pecl install yaml \ 
+    #&& pecl install grpc \
     && pecl install rdkafka \
-    && pecl install grpc \
+    && pecl install yaml \
     && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
-    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl bcmath tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets imap \
-    #&& docker-php-ext-enable redis yaml apcu memcached timezonedb grpc rdkafka yaml
-    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka yaml    \
+    && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl iconv bcmath xml mbstring pdo tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets \
+    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka yaml \
     && printf "log_errors = On \nerror_log = /dev/stderr\n" > /usr/local/etc/php/conf.d/php-logs.ini
 
 # Install yq
