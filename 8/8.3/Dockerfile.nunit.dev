@@ -3,4 +3,5 @@ FROM ghcr.io/islamic-network/php:8.3-unit
 ENV PROVISION_CONTEXT "nunit_development"
 
 # Add Development PHP.ini
-COPY etc/php/development.ini /usr/local/etc/php/conf.d/production.ini
+RUN rm /usr/local/etc/php/conf.d/development.ini
+COPY etc/php/development.ini /usr/local/etc/php/conf.d/development.ini
