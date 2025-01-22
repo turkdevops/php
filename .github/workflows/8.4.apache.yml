@@ -57,10 +57,10 @@ jobs:
             PHP_VERSION=8.4
           push: true
           tags: |
-            bcr.ax/library/php:8.3-apache
-            islamicnetwork/php:8.3-apache
-            ghcr.io/islamic-network/php:8.3-apache
-            quay.io/islamic-network/php:8.3-apache
+            bcr.ax/library/php:8.4-apache
+            islamicnetwork/php:8.4-apache
+            ghcr.io/islamic-network/php:8.4-apache
+            quay.io/islamic-network/php:8.4-apache
       - name: Build and push the Apache Development Image
         uses: docker/build-push-action@v5
         with:
@@ -71,7 +71,7 @@ jobs:
             PHP_VERSION=8.4
           push: true
           tags: |
-            bcr.ax/library/php:8.3-apache-dev
-            islamicnetwork/php:8.3-apache-dev
-            ghcr.io/islamic-network/php:8.3-apache-dev
-            quay.io/islamic-network/php:8.3-apache-dev
+            bcr.ax/library/php:8.4-apache-dev
+            islamicnetwork/php:8.4-apache-dev
+            ghcr.io/islamic-network/php:8.4-apache-dev
+            quay.io/islamic-network/php:8.4-apache-dev
