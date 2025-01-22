@@ -1,4 +1,5 @@
-FROM nginx/unit:1.29.1-php8.1
+ARG PHP_VERSION=$PHP_VERSION
+FROM unit:php${PHP_VERSION}
 
 # Setup Debian
 RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install -y \
@@ -17,8 +18,8 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         libpng-dev \
         libwebp-dev \
         libgmp-dev \
-        libyaml-dev \
         libjpeg-dev \
+        libyaml-dev \
         libfreetype6-dev \
         libaio1 \
         libldap2-dev \
@@ -30,30 +31,30 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         gnupg2 \
         zip \
         git \
+        curl \
+        jq \
         gcc \
         g++ \
         librdkafka-dev \
         autoconf \
         libc-dev \
-	libc-client-dev \
-        pkg-config \ 
-        libkrb5-dev \
+        pkg-config \
         iputils-ping \
-	procps \
-    && rm -r /var/lib/apt/lists/* \
     && pecl install redis \
     && pecl install apcu \
-    && pecl install yaml \
     && pecl install memcached \
     && pecl install timezonedb \
-#    && pecl install grpc \ Skip grpc as it takes over 20 mins to install.
+    #&& pecl install grpc \
     && pecl install rdkafka \
-    && pecl install apfd \
+    && pecl install yaml \
     && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
-    && docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
-    && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl bcmath tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets imap \
-    #&& docker-php-ext-enable redis apcu memcached timezonedb grpc rdkafka apfd
-    && docker-php-ext-enable redis apcu yaml memcached timezonedb rdkafka apfd
+    && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl iconv bcmath xml mbstring pdo tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets \
+    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka yaml \
+    && printf "log_errors = On \nerror_log = /dev/stderr\n" > /usr/local/etc/php/conf.d/php-logs.ini
+
+# Install yq
+RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
+  chmod +x /usr/bin/yq
 
 # Composer
 RUN mkdir -p /usr/local/ssh

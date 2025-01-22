@@ -18,6 +18,7 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         libpng-dev \
         libwebp-dev \
         libgmp-dev \
+        libyaml-dev \
         libjpeg-dev \
         libfreetype6-dev \
         libaio1 \
@@ -39,13 +40,14 @@ RUN apt-get -y update && apt-get -y upgrade && ACCEPT_EULA=Y && apt-get install 
         iputils-ping \
     && pecl install redis \
     && pecl install apcu \
+    && pecl install yaml \
     && pecl install memcached \
     && pecl install timezonedb \
     # && pecl install grpc \
     && pecl install rdkafka \
     && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
     && docker-php-ext-install gd calendar gmp ldap sysvmsg pcntl iconv bcmath xml mbstring pdo tidy gettext intl pdo_mysql mysqli simplexml xml xsl xmlwriter zip opcache exif sockets \
-    && docker-php-ext-enable redis apcu memcached timezonedb rdkafka \
+    && docker-php-ext-enable redis apcu yaml memcached timezonedb rdkafka \
     && printf "log_errors = On \nerror_log = /dev/stderr\n" > /usr/local/etc/php/conf.d/php-logs.ini
 
 

@@ -1,0 +1,10 @@
+ARG PHP_VERSION=$PHP_VERSION
+FROM ghcr.io/islamic-network/php:${PHP_VERSION}-unit
+
+ENV PROVISION_CONTEXT "nunit_development"
+
+# Add Development PHP.ini
+COPY etc/php/development.ini /usr/local/etc/php/conf.d/development.ini
+
+# Remove Production PHP.ini
+RUN rm -rf /usr/local/etc/php/conf.d/production.ini

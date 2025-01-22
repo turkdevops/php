@@ -1,0 +1,54 @@
+name: Build Docker Images for PHP 8.1 (CLI)
+on:
+  workflow_dispatch:
+    branches:
+      - master
+    paths:
+      - "8/8.1/Dockerfile.cli"
+  push:
+    branches:
+      - "master"
+    paths:
+      - "8/8.1/Dockerfile.cli"
+jobs:
+  docker-build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      ## Login to all 3 registries: DockerHub, GitHub Actions Container Registry, and Quay.io ##
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to the GitHub Actions Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.GHCR_TOKEN }}
+      - name: Login to the Quay.io Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+      ## Build and push the Docker image ##
+      - name: Build and push the CLI Image
+        uses: docker/build-push-action@v5
+        with:
+          context: 8/8.1
+          platforms: linux/amd64,linux/arm64
+          file: 8/8.1/Dockerfile.cli
+          build-args: |
+            PHP_VERSION=8.1
+          push: true
+          tags: |
+            islamicnetwork/php:8.1-cli
+            ghcr.io/islamic-network/php:8.1-cli
+            quay.io/islamic-network/php:8.1-cli

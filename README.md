@@ -1,10 +1,7 @@
-[![CircleCI](https://circleci.com/gh/islamic-network/php.svg?style=shield)](https://circleci.com/gh/islamic-network/php)
 [![](https://img.shields.io/github/license/islamic-network/php.svg)](https://github.com/islamic-network/php/blob/master/LICENSE.txt)
 ![Docker Pulls](https://img.shields.io/docker/pulls/islamicnetwork/php)
- 
+  
 # PHP Docker Images 
-
-*NOTE:* In light of the changes at Docker Hub for free organisation accounts, all Islamic Network images are moving to the GitHub Container Registry.
 
 This repository produces PHP Images for the CLI and with Apache, ready for production use.
 
@@ -17,28 +14,42 @@ packages on production containers controversial, it just makes resolving product
 These images have been tested on tested on AWS EKS, Azure AKS, Google GKE, Digital Ocean DOKS, Linode LKE, OpenShift, Apache Mesos and Sloppy.io.
 
 ## CLI Images
-CLI Images are available on Docker Hub and Quay.io as:
+CLI Images are available on the GitHub Container Registry, Docker Hub and Quay.io as:
 
+* islamicnetwork/php:8.3-cli
+* islamicnetwork/php:8.2-cli
+* islamicnetwork/php:8.1-cli
+* ghcr.io/islamic-network/php:8.3-cli
+* ghcr.io/islamic-network/php:8.2-cli
 * ghcr.io/islamic-network/php:8.1-cli
-* ghcr.io/islamic-network/php:8.0-cli
-* ghcr.io/islamic-network/php:7.4-cli
+* quay.io/islamic-network/php:8.2-cli
+* quay.io/islamic-network/php:8.3-cli
 * quay.io/islamic-network/php:8.1-cli
-* quay.io/islamic-network/php:8.0-cli
-* quay.io/islamic-network/php:7.4-cli
 
 
 ## Apache Images
-Apache Images are available on Docker Hub and Quay.io as:
+Apache Images are available on GitHub Container Registry, Docker Hub and Quay.io as:
 
+* islamicnetwork/php:8.3-apache
+* islamicnetwork/php:8.2-apache
+* islamicnetwork/php:8.1-apache
+* ghcr.io/islamic-network/php:8.3-apache
+* ghcr.io/islamic-network/php:8.2-apache
 * ghcr.io/islamic-network/php:8.1-apache
-* ghcr.io/islamic-network/php:8.0-apache
-* ghcr.io/islamic-network/php:7.4-apache
+* quay.io/islamic-network/php:8.2-apache
+* quay.io/islamic-network/php:8.3-apache
 * quay.io/islamic-network/php:8.1-apache
-* quay.io/islamic-network/php:8.0-apache
-* quay.io/islamic-network/php:7.4-apache
 
 ### NGINX Unit Images
+Unit Images are available on GitHub Container Registry, Docker Hub and Quay.io as:
+* islamicnetwork/php:8.3-unit
+* islamicnetwork/php:8.2-unit
+* islamicnetwork/php:8.1-unit
+* ghcr.io/islamic-network/php:8.3-unit
+* ghcr.io/islamic-network/php:8.2-unit
 * ghcr.io/islamic-network/php:8.1-unit
+* quay.io/islamic-network/php:8.2-unit
+* quay.io/islamic-network/php:8.3-unit
 * quay.io/islamic-network/php:8.1-unit
 
 The Apache document root in the container is /var/www/html and Apache is exposed on port 8080.
@@ -48,19 +59,12 @@ These images come with opcache enabled and no xdebug, so they cannot be used for
 ## Apache Images for Development Purposes
 Apache Images are available on Docker Hub and Quay.io and come bundled with xdebug. Opcache is disabled in these images.
 
-* ghcr.io/islamic-network/php:8.1-apache-dev
-* ghcr.io/islamic-network/php:8.0-apache-dev
-* ghcr.io/islamic-network/php:7.4-apache-dev
-* quay.io/islamic-network/php:8.1-apache-dev
-* quay.io/islamic-network/php:8.0-apache-dev
-* quay.io/islamic-network/php:7.4-apache-dev
+To use the these images just append -dev to any of the above tags. For instance: islamicnetwork/php:8.3-apache-dev
 
 ### NGINX Unit Images for Development Purposes
-* ghcr.io/islamic-network/php:8.1-unit-dev
-* quay.io/islamic-network/php:8.1-unit-dev
+Unit Images are available on Docker Hub and Quay.io and come bundled with xdebug. Opcache is disabled in these images.
 
-The Apache document root in the container is /var/www/html and Apache is exposed on port 8080.
-
+To use the these images just append -dev to any of the above tags. For instance: islamicnetwork/php:8.3-unit-dev
 
 ## Using Docker Secrets
 These new images no longer support converting Docker secrets into Environment Variables. If you are using PHP 7.4 and need to use Docker Secrets (if,
@@ -131,11 +135,11 @@ The following modules / extensions / PECLs are enabled on this container (exclud
 #### PECLs
 * Redis
 * APCu
-* gRPC
+* gRPC (removed in 8.2 and 8.3 because it adds over 20 minutes to the build time)
 * Memcached
 * TimezoneDB
 * APCu
-* RD Kafka
+* RD Kafka 
 
 ## Need something else added?
 
@@ -144,6 +148,5 @@ Raise a pull request or an issue.
 ## License
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-```
-
+ 
 
