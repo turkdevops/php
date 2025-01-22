@@ -71,7 +71,7 @@ jobs:
             PHP_VERSION=8.3
           push: true
           tags: |
-            bcr.ax/library/php:8.3-unit
+            bcr.ax/library/php:8.3-unit-dev
             islamicnetwork/php:8.3-unit-dev
             ghcr.io/islamic-network/php:8.3-unit-dev
             quay.io/islamic-network/php:8.3-unit-dev
