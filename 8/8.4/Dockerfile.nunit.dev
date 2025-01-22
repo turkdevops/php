@@ -1,4 +1,5 @@
-FROM ghcr.io/islamic-network/php:8.2-unit
+ARG PHP_VERSION=$PHP_VERSION
+FROM ghcr.io/islamic-network/php:${PHP_VERSION}-unit
 
 ENV PROVISION_CONTEXT "nunit_development"
 
